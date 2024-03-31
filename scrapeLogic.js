@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer'
+require('dotenv').config()
 
 export async function scrapeLogic (res,trackingno_list) {  
 
@@ -9,16 +10,15 @@ export async function scrapeLogic (res,trackingno_list) {
     // Browser options
     let options = {
     headless: false,
-    //executablePath: 'brave-browser',
+    executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
     ignoreHTTPSErrors: true,
     ignoreDefaultArgs: ['--enable-automation'],
-    /*args: [
-        '--incognito',
-        '--disable-infobars',
-        '--start-maximized',
-        '--user-data-dir=C:/puppeteer/',
-        '--disable-features=IsolateOrigins,site-per-process'
-    ]*/
+    args: [
+        '--disable-setuid-sandbox',
+        '--no-sendbox',
+        '--single-process',
+        '--no-zygoote',
+    ]
     }
     const browser = await puppeteer.launch(options)
     try {
