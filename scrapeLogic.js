@@ -10,6 +10,7 @@ export async function scrapeLogic (res,trackingno_list) {
     // Browser options
     let options = {
     headless: false,
+    executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
     ignoreHTTPSErrors: true,
     ignoreDefaultArgs: ['--enable-automation'],
     args: [
@@ -18,7 +19,6 @@ export async function scrapeLogic (res,trackingno_list) {
         '--single-process',
         '--no-zygoote',
     ]
-    executablePath: process.env.NODE_ENV === "production" ? process.env.PUPPETEER_EXECUTABLE_PATH : puppeteer.executablePath(),
     }
     const browser = await puppeteer.launch(options)
     try {
