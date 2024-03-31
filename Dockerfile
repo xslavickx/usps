@@ -5,5 +5,6 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     WORKDIR /usr/src/app
 
     COPY pagacke*.json ./
-    RUN npm PUPPETEER_SKIP_CHROMIUM_DOWNLOADCOPY . .
+    RUN npm PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+    COPY . .
     CMD [ "node", "index.js"]
