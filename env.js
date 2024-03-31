@@ -6,6 +6,7 @@ process.env.FT_TMP="sftp://slava@happy.ia/home/slava/ft/system/tmp"
 process.env.NODE_PATH="/home/slava/Documents/js_scripts/node_modules"
 
 /**/
+//const prod_server = (index) => {
 export function prod_server(index){
  switch (index){
 // Server 1  
@@ -122,6 +123,8 @@ return;
   return;
  };
 };
+
+//module.exports = { prod_server }
 //prod_server(12);
 
 /** /
