@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer'
-require('dotenv').config()
+import { config } from 'dotenv'
 
 export async function scrapeLogic (res,trackingno_list) {  
 
